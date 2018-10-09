@@ -9,7 +9,7 @@ The project requirements are:
   - Attributes to store: id of sale, date and time of the sale and total price
 - Read: Obtain all sales that contain a specific product and obtain all sales made on a certain date
 - Update: Be able to update the quantity of a sale detail
-- Delete (either physical or logical): Allow a sale or a sale detail to be deleted
+- Delete (either hard or soft): Allow a sale or a sale detail to be deleted
 - Consume the API using NodeJS
 
 
