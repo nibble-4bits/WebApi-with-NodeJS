@@ -27,24 +27,3 @@ AS
 	ON P.Id = SD.ProductId
 	WHERE S.Id = (SELECT MAX(Id) FROM Sale)
 GO
-
-
-
-
-
-
-
-/* PRUEBAS */
-DECLARE @Entries AS SaleDetailType
-INSERT INTO @Entries(ProductId, Quantity) VALUES(1,1),(2,5),(3,3)
-EXEC dbo.sp_AddSale @Entries
-
-DECLARE @Entries AS SaleDetailType
-INSERT INTO @Entries(ProductId, Quantity) VALUES(4,2)
-EXEC dbo.sp_AddSale @Entries
-
-SELECT * FROM SaleDetail
-SELECT * FROM Sale
-DELETE FROM Sale
-GO
-/* TERMINAN LAS PRUEBAS */

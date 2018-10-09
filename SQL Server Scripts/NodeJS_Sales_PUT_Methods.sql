@@ -17,12 +17,3 @@ AS
 	ON SD.ProductId = P.Id
 	WHERE SD.Id = @Id
 GO
-
-/* COMIENZAN LAS PRUEBAS */
-EXEC dbo.sp_UpdateSaleDetailQuantity 69, 5
-GO
-
-SELECT * FROM SaleDetail
-SELECT * FROM Sale
-GO
-/* Y SE ACABAN LAS PRUEBAS */
