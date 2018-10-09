@@ -1,0 +1,44 @@
+CREATE DATABASE NodeJS_Store
+GO
+
+USE NodeJS_Store
+GO
+
+-- TABLES
+CREATE TABLE Product(
+	Id INT PRIMARY KEY IDENTITY,
+	[Name] VARCHAR(100) NOT NULL,
+	UnitPrice MONEY NOT NULL
+)
+GO
+
+CREATE TABLE Sale(
+	Id INT PRIMARY KEY IDENTITY,
+	SaleDateTime DATETIME NOT NULL,
+	TotalPrice MONEY NOT NULL,
+	[Status] BIT DEFAULT 1
+)
+GO
+
+CREATE TABLE SaleDetail(
+	Id INT PRIMARY KEY IDENTITY,
+	ProductId INT NOT NULL FOREIGN KEY REFERENCES Product(Id),
+	SaleId INT NOT NULL FOREIGN KEY REFERENCES Sale(Id) ON DELETE CASCADE,
+	Quantity INT NOT NULL,
+	[Status] BIT DEFAULT 1
+)
+GO
+
+-- INSERTS
+INSERT INTO Product VALUES('UltraFire SK68 LED Flashlight', 3.85)
+INSERT INTO Product VALUES('HS1010 Illuminance Brightness Light Meter', 5.94)
+INSERT INTO Product VALUES('Car Anti-Tracking GPS Signal Blocker', 3.28)
+INSERT INTO Product VALUES('Rare-earth Neodymium NIB Disc Magnet (100-Pack)', 1.50)
+GO
+
+-- CUSTOM DATA TYPES
+CREATE TYPE SaleDetailType AS TABLE(
+	ProductId INT,
+	Quantity INT
+)
+GO
